@@ -1,0 +1,480 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "P1IncidentReviewReport",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "ExecutiveSummary": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 8,
+            "maxItems": 12
+        },
+        "DetailedReport": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Header": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "DateOfReview": {
+                            "type": "string"
+                        },
+                        "ReviewerName": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "DateOfReview",
+                        "ReviewerName"
+                    ]
+                },
+                "Ticket Details": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Ticket Number": {
+                            "type": "string"
+                        },
+                        "Incident Open Date/Time": {
+                            "type": "string"
+                        },
+                        "Incident Close Date/Time": {
+                            "type": "string"
+                        },
+                        "SLA (24 Hours) Met or Breached": {
+                            "type": "string",
+                            "enum": [
+                                "Met",
+                                "Breached",
+                                "Unknown"
+                            ]
+                        },
+                        "On‑Call Assignment Time": {
+                            "type": "string"
+                        },
+                        "Customer Name/Department": {
+                            "type": "string"
+                        },
+                        "Assigned Group/Technician": {
+                            "type": "string"
+                        },
+                        "Initial Response Time to Customer": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Ticket Number",
+                        "Incident Open Date/Time",
+                        "Incident Close Date/Time",
+                        "SLA (24 Hours) Met or Breached"
+                    ]
+                },
+                "Timeline": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "time": {
+                                "type": "string"
+                            },
+                            "event": {
+                                "type": "string"
+                            },
+                            "evidence": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "time",
+                            "event"
+                        ]
+                    }
+                },
+                "Metrics": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "MTTD_min": {
+                            "type": "number"
+                        },
+                        "MTTA_min": {
+                            "type": "number"
+                        },
+                        "MTTR_min": {
+                            "type": "number"
+                        },
+                        "SLA24h": {
+                            "type": "string",
+                            "enum": [
+                                "Met",
+                                "Breached",
+                                "Unknown"
+                            ]
+                        },
+                        "calcEvidence": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "MTTR_min",
+                        "SLA24h"
+                    ]
+                },
+                "Work Notes Review": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "thorough": {
+                            "type": "boolean"
+                        },
+                        "stepsIncluded": {
+                            "type": "boolean"
+                        },
+                        "evidence": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "missingSteps": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "thorough",
+                        "stepsIncluded"
+                    ]
+                },
+                "Customer Communication": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "contactInfoCorrect": {
+                            "type": "boolean"
+                        },
+                        "timelyAndClear": {
+                            "type": "boolean"
+                        },
+                        "regularUpdates": {
+                            "type": "boolean"
+                        },
+                        "cadenceMinutesMedian": {
+                            "type": "number"
+                        },
+                        "evidence": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "contactInfoCorrect",
+                        "timelyAndClear",
+                        "regularUpdates"
+                    ]
+                },
+                "Green Box Updates": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "accurate": {
+                            "type": "boolean"
+                        },
+                        "issues": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "evidence": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "accurate"
+                    ]
+                },
+                "Configuration Items (CIs)": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "properlyDefined": {
+                            "type": "boolean"
+                        },
+                        "affectedCIs": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "evidence": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "properlyDefined"
+                    ]
+                },
+                "Closure Codes": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "correct": {
+                            "type": "boolean"
+                        },
+                        "evidence": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "correct"
+                    ]
+                },
+                "Problem Ticket Ownership": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "confirmed": {
+                            "type": "boolean"
+                        },
+                        "recommendation": {
+                            "type": "string"
+                        },
+                        "evidence": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "confirmed"
+                    ]
+                },
+                "RCA": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "hardware",
+                                "software",
+                                "configuration",
+                                "change",
+                                "capacity",
+                                "vendor",
+                                "user",
+                                "process",
+                                "unknown"
+                            ]
+                        },
+                        "fiveWhys": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1,
+                            "maxItems": 5
+                        },
+                        "confidence": {
+                            "type": "string",
+                            "enum": [
+                                "low",
+                                "medium",
+                                "high"
+                            ]
+                        },
+                        "hypotheses": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "hypothesis": {
+                                        "type": "string"
+                                    },
+                                    "evidenceGaps": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "Blast Radius & Business Impact": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "usersAffected": {
+                            "type": "number"
+                        },
+                        "sites": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "businessImpact": {
+                            "type": "string"
+                        },
+                        "severityValid": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "Controls & Detection": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "alertsFired": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "gaps": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "proposals": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "CAPA": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Immediate": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/actionItem"
+                            }
+                        },
+                        "ShortTerm": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/actionItem"
+                            }
+                        },
+                        "LongTerm": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/actionItem"
+                            }
+                        }
+                    }
+                },
+                "QualityScore": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Documentation": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 25
+                        },
+                        "Comms": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 25
+                        },
+                        "SLA": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 25
+                        },
+                        "CI_Closure": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 15
+                        },
+                        "GreenBoxes": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10
+                        },
+                        "Total": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        },
+                        "Band": {
+                            "type": "string",
+                            "enum": [
+                                "Red",
+                                "Yellow",
+                                "Green"
+                            ]
+                        }
+                    }
+                },
+                "Additional Notes/Findings": {
+                    "type": "string"
+                },
+                "Action Items / Follow‑Ups": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "required": [
+        "ExecutiveSummary",
+        "DetailedReport"
+    ],
+    "$defs": {
+        "actionItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "due": {
+                    "type": "string"
+                },
+                "metric": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "action",
+                "owner",
+                "due"
+            ]
+        }
+    }
+}
